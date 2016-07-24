@@ -7,7 +7,7 @@ $(document).ready(function() {
   console.log('ready!');
 
 });
-
+var myLatLng = {lat: 37.784580, lng: -122.397437};
 var marker;
 function createMarker(coords, map, title){
   marker = new google.maps.Marker({
@@ -22,13 +22,25 @@ function initMap() {
     center: {lat: 37.7694, lng: -122.4862},
     zoom: 14
   });
+  //  example marker placement
+  marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    animation: google.maps.Animation.DROP
+  });
+
+  //  example marker placement
+  marker2 = createMarker({lat: 37.7694, lng: -122.4862}, map, "Outside Lands");
+
+  marker3 = createCustomMarker({lat: 37.8694, lng: -122.5862}, map, "Outside Lands");
 }
 function createCustomMarker(coords,map,title){
   marker = new google.maps.Marker({
     position: coords,
     map: map,
     title: title,
-    icon: createImage("/assets/icon.png")
+    // icon: createImage("/assets/icon.png")
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/174-free-google-maps-pointer.png/286px-174-free-google-maps-pointer.png'
   });
 }
 
@@ -42,12 +54,12 @@ function createImage(url){
   return image;
 }
 
-initMap()
+// initMap()
 
-createMarker({lat: 37.7694, lng: -122.4862}, map, "Outside Lands");
+marker = createMarker({lat: 37.7694, lng: -122.4862}, map, "Outside Lands");
 // var info = createInfoWindow("Congratulations!");
 //
-google.maps.event.addListener(marker, 'click', function() {
+google.maps.event.addListener(marker, 'click', function(event) {
   console.log(event);
   info.open(map,marker);
 });
