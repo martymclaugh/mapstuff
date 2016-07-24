@@ -5,13 +5,7 @@ $(document).ready(function() {
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
   console.log('ready!');
-  createMarker()
-  var info = createInfoWindow("Congratulations!");
-  
-  google.maps.event.addListener(marker, 'click', function() {
-    console.log(event);
-    info.open(map,marker);
-  });
+
 });
 
 var marker;
@@ -22,7 +16,13 @@ function createMarker(coords, map, title){
     title: title
   });
 }
-
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
+    center: {lat: 37.7694, lng: -122.4862},
+    zoom: 14
+  });
+}
 function createCustomMarker(coords,map,title){
   marker = new google.maps.Marker({
     position: coords,
@@ -42,6 +42,15 @@ function createImage(url){
   return image;
 }
 
+initMap()
+
+createMarker({lat: 37.7694, lng: -122.4862}, map, "Outside Lands");
+// var info = createInfoWindow("Congratulations!");
+//
+google.maps.event.addListener(marker, 'click', function() {
+  console.log(event);
+  info.open(map,marker);
+});
 // function createInfoWindow(text){
 //   var infowindow = new google.maps.InfoWindow({
 //     content: text
