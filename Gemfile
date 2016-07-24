@@ -11,6 +11,7 @@ gem 'activesupport', '~>4.2.0'
 gem 'activerecord', '~>4.2.0'
 
 gem 'rake'
+gem 'dotenv', '~> 2.1', '>= 2.1.1'
 
 gem 'shotgun'
 gem 'bcrypt'
